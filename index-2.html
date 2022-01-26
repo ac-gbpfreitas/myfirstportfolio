@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - Tricks</title>
+</head>
+<style>
+    /*
+    https://css-tricks.com/almanac/properties/a/animation/
+    https://templatemo.com/templates/templatemo_553_xtra_blog/?query=Simple
+    */
+    /*
+    To every p tag the animation will take 3s
+    and the animation name will be slidein
+    */
+    p {
+        animation: 
+            fadeInOut 3s ease infinite alternate, 
+            nudge 5s linear infinite alternate;
+        /*
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-play-state: running;
+        */
+        /*
+        animation-duration: 3s; /* gives a timer*/
+        /*animation-name: slidein; /*Gives a name to the animation*/
+        /*animation-iteration-count: infinite; /*Repeats the animation*/
+        /*animation-direction: alternate; /*Changes the direction of the animation*/
+        
+        /*animation: 3s infinite alternate slidein;*/
+        
+        /*animation-name: fadeInOut, moveLeft300px, bounce; /*3 animations*/
+        /*animation-duration: 2.5s, 5s, 1s; /*each timer is related to an animation*/
+        /*animation-iteration-count: 2, 1, 5; /*Number of times that the animation starts*/
+
+        /*transform: translate(5%,5%); /*Move the element through the page*/
+        /*transform: scale(2,2); /*Increase the scale of the element. In this case, 2 * 2 */
+        /*transform: rotate(20deg); /*rotates the element 20deg in the page*/
+
+        /*
+            Changes the position of transformed elements
+            In this case, it is important to have the transform attribute defined
+        */ 
+        /*transform-origin: 2% 5%;*/
+        /*animation-fill-mode: none|forwards|backwards|both;*/
+    }
+
+    @keyframes pulse {
+        0% {
+            background-color: bisque;
+        }
+        25%{
+            background-color: burlywood;
+        }
+        50% {
+            background-color:darksalmon;
+        }
+
+        100% {
+            background-color: coral;
+        }
+    }
+
+    /*
+    p.intro - selects all p that have intro class
+    table, td - selects all the tags table and td
+    div p - selects all p inside a div
+    div > p selects all p that has a parent div
+    div + p selects the first p element that is placed directly after a div
+    [data-id] selects all elements that have data-id attribute set
+    [data-id=value] selects all elements that has a data-id set with a specific value
+    [data-id~=value] selects all elements that has a data-id set containing value word
+    [data-id^=value] selects all elements that has a data-id set beginning with value word
+    [data-id$=value] selects all elements that has a data-id set ending with value word
+    p::after 	Insert something after the content of each <p> element
+    p::before 	Insert something before the content of each <p> element
+    input:checked 	Selects every checked <input> element
+    input:disabled 	Selects every disabled <input> element
+    p:empty 	Selects every <p> element that has no children (including text nodes)
+    input:enabled 	Selects every enabled <input> element
+    p::first-letter 	Selects the first letter of every <p> element
+    p::first-line 	Selects the first line of every <p> element
+    input:focus 	Selects the input element which has focus
+    :root 	Selects the document's root element
+    #news:target 	Selects the current active #news element (clicked on a URL containing that anchor name)
+    a:visited 	Selects all visited links
+    */
+
+    /*
+    
+    ease: Start the transition slowly then increase the speed as time passes till the middle of the animation. From the middle point, the animation slows down gradually. The value “ease” is equivalent to the (0.25, 0.1, 0.25, 1) cubic-bezier function.
+    ease-in: Start the transition slowly and keep on increasing the speed till the end. The value “ease-in” is equivalent to the (0.42, 0, 1 , 1) cubic-bezier function.
+    ease-out: Start the transition quickly and keep on decreasing the speed till the end. The value “ease-out” is equivalent to the (0, 0, 0.58, 1) cubic-bezier function.
+    ease-in-out: Start the transition and keep on increasing the speed towards the middle of the animation. From middle to end, the transition keeps on decreasing at a gradual pace. The ease-in-out and functions are similar except that the ease starts slightly slower than it ends.
+    linear: The transition starts, moves, and ends at the same speed. The value “linear” is equivalent to the (0, 0, 1, 1) cubic-bezier function.
+    steps(x, jump_term): The steps function performs the CSS transitions in a series of steps. The number of steps to perform is denoted by “x” while jump_term denotes how to divide these steps between 0% to 100% of the CSS transition. The “jump_term” can be replaced with one of the following values:
+        jump-start: The first jump starts from the beginning of the transition.
+        jump-end: The last jump ends at the end of the animation/transition.
+        jump-none: The jump doesn’t happen at both ends of the animation.
+        jump-both: The value includes pauses at the start as well as end of the animation.
+    start: This is similar to jump-start.
+    end: This is similar to jump-end.
+    step-start: This is equivalent to steps(1, jump_start).
+    step-end: This is equivalent to steps(1, jump-end).
+
+    */
+    /*
+    p:hover {
+        transform: rotate(15deg);
+        transition-delay: 1s;
+        transition-property: color;
+        /*transition-duration: 2s;*/ /*transition-duration applys the animation gradually*/
+        /*animation-duration: 2s;*/ /*animation-duration applys right away*/
+   /* } */    
+
+
+
+
+    /*
+    Set a new Animation using @keyframes animation-name {}
+    from { It is from the animation starts and the width is the size of the animation
+    that is why the page grows to the right}
+    */
+    @keyframes slidein {
+        from {
+            margin-left: 100%;
+            width: 300%;
+        }
+
+        /* 75% is the size the animation takes after starts, then, goes to the next action*/
+        75% {
+            font-size: 300%;
+            margin-left: 25%;
+            width: 150%;
+        }
+        /*to is where the animation ends*/
+        to {
+            margin-left: 0%;
+            width: 100%;
+        }
+    }
+
+    @keyframes fadeInOut {
+        0%, 100% {
+            background-color: yellow;
+        }
+        50% {
+            background-color: red;
+        }
+    }
+
+    .element {
+        height: 250px;
+        width: 250px;
+        margin: 0 auto;
+        background-color: red;
+        animation-name: stretch;
+        animation-duration: 1.5s; 
+        animation-timing-function: ease-out; 
+        animation-delay: 0;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-fill-mode: none;
+        animation-play-state: running;
+    }
+
+
+    @keyframes stretch {
+        0% {
+            transform: scale(.3);
+            background-color: red;
+            border-radius: 100%;
+        }
+        50% {
+            background-color: orange;
+        }
+        100% {
+            transform: scale(1.5);
+            background-color: yellow;
+        }
+    }
+
+    .element-2 {
+        height: 400px;
+        width: 400px;
+        background-color: red;
+        animation: 
+            pulse 3s ease infinite alternate, 
+            nudge 5s linear infinite alternate;
+        border-radius: 100%;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            background-color: red;
+        }
+        50% {
+            background-color: orange;
+        }
+    }
+
+    @keyframes nudge {
+        0%, 100% {
+            transform: translate(0, 0);
+        }
+        
+        50% {
+            transform: translate(150px, 0);
+        }
+        
+        80% {
+            transform: translate(-150px, 0);
+        }
+    }
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+</style>
+<body>
+    <!--
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, dolor. Eaque cum laboriosam vero consectetur culpa ipsa, adipisci quibusdam libero doloremque soluta, fugiat eveniet obcaecati?
+    </p>
+    -->
+    
+
+    <div class="element"></div>
+    <div class="element-2"></div>
+
+</body>
+</html>
